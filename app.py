@@ -1,8 +1,9 @@
 import qbittorrentapi
 from datetime import datetime
+import os
 
-host = "192.168.0.3:8080"
-tag = "Not Working"
+host = os.getenv("HOST")
+tag = os.getenv("TAG")
 
 # https://qbittorrent-api.readthedocs.io/en/latest/apidoc/client.html#qbittorrentapi.client.Client
 qbt_client = qbittorrentapi.Client(host=host)
