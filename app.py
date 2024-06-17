@@ -1,6 +1,6 @@
-import qbittorrentapi
-from datetime import datetime
 import os
+
+import qbittorrentapi
 
 host = os.getenv("HOST")
 tag = os.getenv("TAG")
