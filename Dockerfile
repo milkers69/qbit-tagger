@@ -9,4 +9,4 @@ COPY . .
 RUN ls -la
 RUN pip3 install -r requirements.txt
 
-ENTRYPOINT ["python3", "app/app.py"]
+ENTRYPOINT ["python3", "/app/app.py"]
