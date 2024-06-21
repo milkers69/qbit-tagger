@@ -32,6 +32,6 @@ qbt_client.torrent_tags.add_tags(
     torrent_hashes=[
         torrent.hash
         for torrent in torrents
-        if all(tracker.status in (0,1,4) for tracker in torrent.trackers)
+        if all(tracker.status in (0, 1, 4) for tracker in torrent.trackers)
     ],
 )
