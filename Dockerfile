@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.20.1
 
 # install system packages
 RUN  apk add --no-cache --upgrade python3 py3-pip python3-dev
