@@ -2,7 +2,7 @@ name: Code Formatting
 on: [push, pull_request]
 
 jobs:
-  build-and-push-image:
+  black-formatting:
     runs-on: ubuntu-latest
     permissions:
       contents: write
