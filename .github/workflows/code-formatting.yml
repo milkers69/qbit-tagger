@@ -13,3 +13,11 @@ jobs:
 
       - name: Format code
         uses: psf/black@stable
+        with: 
+          options: "app.py"
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Black Formatting
+          commit_user_name: Black
