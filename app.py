@@ -4,9 +4,11 @@ import qbittorrentapi
 
 host = os.getenv("HOST")
 tag = os.getenv("TAG")
+username = os.getenv("USERNAME")
+password = os.getenv("PASSWORD")
 
 # https://qbittorrent-api.readthedocs.io/en/latest/apidoc/client.html#qbittorrentapi.client.Client
-qbt_client = qbittorrentapi.Client(host=host)
+qbt_client = qbittorrentapi.Client(host=host, username=username, password=password)
 
 # try to login, throws qbittorrentapi.LoginFailed exception
 qbt_client.auth_log_in()
