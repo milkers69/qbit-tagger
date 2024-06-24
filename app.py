@@ -27,12 +27,12 @@ for torrent in qbt_client.torrents_info():
     
 # cleanup tagged torrents that are working now
 qbt_client.torrent_tags.remove_tags(
-    tags=[tag],
+    tags=tag,
     torrent_hashes=torrents_to_remove,
 )
 
 # tag torrents that are not working now
 qbt_client.torrent_tags.add_tags(
-    tags=[tag],
+    tags=tag,
     torrent_hashes=torrents_to_add,
 )
