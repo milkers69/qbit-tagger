@@ -22,7 +22,7 @@ for torrent in qbt_client.torrents_info():
     if tag in torrent.tags and any(tracker.status == 2 for tracker in torrent.trackers):
         torrents_to_remove.add(torrent.hash)
     # torrents that are not tagged and not working now
-    elif tag not in torrent.tags all(tracker.status in (0, 1, 4) for tracker in torrent.trackers):
+    elif tag not in torrent.tags and all(tracker.status in (0, 1, 4) for tracker in torrent.trackers):
         torrents_to_add.add(torrent.hash)
     
 # cleanup tagged torrents that are working now
