@@ -9,7 +9,7 @@ password = os.getenv("PASSWORD")
 
 # https://qbittorrent-api.readthedocs.io/en/latest/apidoc/client.html#qbittorrentapi.client.Client
 qbt_client = qbittorrentapi.Client(
-    host=host, username=username, password=password, FORCE_SCHEME_FROM_HOST=true
+    host=host, username=username, password=password, FORCE_SCHEME_FROM_HOST=True
 )
 
 # try to login, throws qbittorrentapi.LoginFailed exception
