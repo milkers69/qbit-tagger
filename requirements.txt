@@ -1,1 +1,1 @@
-qbittorrent-api==2024.8.65
+qbittorrent-api==2024.9.66
