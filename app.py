@@ -19,7 +19,7 @@ qbt_client.auth_log_in()
 torrents_to_remove = set()
 torrents_to_add = set()
 # for all torrents
-for torrent in qbt_client.torrents_info(status_filter="running"):
+for torrent in qbt_client.torrents_info(status_filter="seeding"):
     # torrents that are tagged and working now
     if tag in torrent.tags and any(tracker.status == 2 for tracker in torrent.trackers):
         torrents_to_remove.add(torrent.hash)
