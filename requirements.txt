@@ -1,1 +1,1 @@
-qbittorrent-api==2024.11.69
+qbittorrent-api==2024.11.70
