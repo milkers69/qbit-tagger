@@ -22,10 +22,11 @@ services:
   qbit-tagger:
     image: ghcr.io/milkers69/qbit-tagger:main
     environment:
-      - HOST=http://192.168.69.69:8080
+      - HOST=http://qbittorrent:8080
       - TAG=Not Working
       - USERNAME=admin
       - PASSWORD=adminadmin
+    # run every 15mins instead of just once
     entrypoint: sh -c "sleep 30; while true; do python3 /app/app.py; sleep $((60*15)); done"
     networks:
       - internal
