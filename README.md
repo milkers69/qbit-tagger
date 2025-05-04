@@ -1,5 +1,7 @@
 # qbit-tagger
 
+Tag torrents with a tag (customizable) in qbit if not announcing properly
+
 examples
 
 `docker run --rm --network host --pull=always -e HOST="192.168.69.69:8080" -e TAG="Not Working" ghcr.io/milkers69/qbit-tagger:main`
