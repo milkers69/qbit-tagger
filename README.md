@@ -1,6 +1,6 @@
-# qbit-tagger
+# **qbit-tagger**
 
-Tag torrents with a tag (customizable) in qbit if not announcing properly
+**Tag torrents with a tag (customizable) in qbit if not announcing properly**
 
 examples
 
