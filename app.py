@@ -1,13 +1,18 @@
+# https://qbittorrent-api.readthedocs.io/en/latest/apidoc/client.html#qbittorrentapi.client.Client
+# https://qbittorrent-api.readthedocs.io/en/latest/apidoc/torrents.html#qbittorrentapi.torrents.TorrentDictionary
+# https://qbittorrent-api.readthedocs.io/en/latest/apidoc/definitions.html#qbittorrentapi.definitions.TrackerStatus
+
 import os
 
 import qbittorrentapi
 
-host = os.getenv("HOST")
-tag = os.getenv("TAG")
-username = os.getenv("USERNAME")
-password = os.getenv("PASSWORD")
+# parse variables with reasonable default values
+host = os.getenv("HOST", "127.0.0.1:8080")
+tag = os.getenv("TAG", "Not Working")
+username = os.getenv("USERNAME", "admin")
+password = os.getenv("PASSWORD", "adminadmin")
 
-# https://qbittorrent-api.readthedocs.io/en/latest/apidoc/client.html#qbittorrentapi.client.Client
+# intialize client
 qbt_client = qbittorrentapi.Client(
     host=host, username=username, password=password, FORCE_SCHEME_FROM_HOST=True
 )
@@ -15,9 +20,10 @@ qbt_client = qbittorrentapi.Client(
 # try to login, throws qbittorrentapi.LoginFailed exception
 qbt_client.auth_log_in()
 
-# https://qbittorrent-api.readthedocs.io/en/latest/apidoc/definitions.html#qbittorrentapi.definitions.TrackerStatus
-torrents_to_remove = set()
+# hashes to update tag on
 torrents_to_add = set()
+torrents_to_remove = set()
+
 # for all torrents
 for torrent in qbt_client.torrents_info(status_filter="seeding"):
     # torrents that are tagged and working now
