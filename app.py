@@ -7,7 +7,7 @@ import os
 import qbittorrentapi
 
 # create logger with default config
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("qbit-tagger")
 logging.basicConfig(level=logging.INFO)
 
 # parse variables with reasonable default values
