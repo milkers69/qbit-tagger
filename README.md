@@ -29,7 +29,7 @@ services:
       - USERNAME=admin
       - PASSWORD=adminadmin
     # run every 15mins instead of just once
-    entrypoint: sh -c "sleep 30; while true; do python3 /app/app.py; sleep $((60*15)); done"
+    entrypoint: sh -c "sleep 90; while true; do python3 /app/app.py; sleep $((60*15)); done"
     networks:
       - internal
     depends_on:
