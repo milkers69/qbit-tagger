@@ -8,6 +8,7 @@ import qbittorrentapi
 
 # create logger with default config
 logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
 
 # parse variables with reasonable default values
 host = os.getenv("HOST", "127.0.0.1:8080")
