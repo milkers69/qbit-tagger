@@ -31,7 +31,7 @@ torrents_to_remove_tag = set()
 
 # load torrents
 torrents = qbt_client.torrents_info(status_filter="seeding")
-logger.info("Loaded %i torrents from qbittorrent", len(torrents)
+logger.info("Loaded %i torrents from qbittorrent", len(torrents))
 
 # for all torrents
 for torrent in torrents:
