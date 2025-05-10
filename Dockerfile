@@ -1,7 +1,7 @@
 FROM alpine:3.21.3
 
 # make and move into "app" folder
-WORKDIR app
+WORKDIR /app
 
 # copy files to app folder
 COPY ["app.py", "requirements.txt", "./"]
