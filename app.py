@@ -45,7 +45,7 @@ for torrent in torrents:
         torrents_to_add_tag.add(torrent.hash)
 
 # cleanup tagged torrents that are working now
-if torrents_to_remove:
+if torrents_to_remove_tag:
     logger.info("Removing tag '%s' from %i torrents", tag, len(torrents_to_remove_tag))
     qbt_client.torrent_tags.remove_tags(
         tags=tag,
@@ -53,7 +53,7 @@ if torrents_to_remove:
     )
 
 # tag torrents that are not working now
-if torrents_to_add:
+if torrents_to_add_tag:
     logger.info("Adding tag '%s' to %i torrents", tag, len(torrents_to_add_tag))
     qbt_client.torrent_tags.add_tags(
         tags=tag,
