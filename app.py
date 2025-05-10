@@ -26,36 +26,36 @@ qbt_client.auth_log_in()
 logger.info("Logged into qbittorrent at %s", host)
 
 # hashes to update tag on
-torrents_to_add = set()
-torrents_to_remove = set()
+torrents_to_add_tag = set()
+torrents_to_remove_tag = set()
 
 # load torrents
 torrents = qbt_client.torrents_info(status_filter="seeding")
-logger.info("Loaded %i torrents from qbittorrent")
+logger.info("Loaded %i torrents from qbittorrent", len(torrents)
 
 # for all torrents
 for torrent in torrents:
     # torrents that are tagged and working now
     if tag in torrent.tags and any(tracker.status == 2 for tracker in torrent.trackers):
-        torrents_to_remove.add(torrent.hash)
+        torrents_to_remove_tag.add(torrent.hash)
     # torrents that are not tagged and not working now
     elif tag not in torrent.tags and all(
         tracker.status in (0, 1, 4) for tracker in torrent.trackers
     ):
-        torrents_to_add.add(torrent.hash)
+        torrents_to_add_tag.add(torrent.hash)
 
 # cleanup tagged torrents that are working now
 if torrents_to_remove:
-    logger.info("Removing tag '%s' from %i torrents", tag, len(torrents_to_remove))
+    logger.info("Removing tag '%s' from %i torrents", tag, len(torrents_to_remove_tag))
     qbt_client.torrent_tags.remove_tags(
         tags=tag,
-        torrent_hashes=torrents_to_remove,
+        torrent_hashes=torrents_to_remove_tag,
     )
 
 # tag torrents that are not working now
 if torrents_to_add:
-    logger.info("Adding tag '%s' to %i torrents", tag, len(torrents_to_add))
+    logger.info("Adding tag '%s' to %i torrents", tag, len(torrents_to_add_tag))
     qbt_client.torrent_tags.add_tags(
         tags=tag,
-        torrent_hashes=torrents_to_add,
+        torrent_hashes=torrents_to_add_tag,
     )
