@@ -1,10 +1,13 @@
 # https://qbittorrent-api.readthedocs.io/en/latest/apidoc/client.html#qbittorrentapi.client.Client
 # https://qbittorrent-api.readthedocs.io/en/latest/apidoc/torrents.html#qbittorrentapi.torrents.TorrentDictionary
 # https://qbittorrent-api.readthedocs.io/en/latest/apidoc/definitions.html#qbittorrentapi.definitions.TrackerStatus
-
+import logging
 import os
 
 import qbittorrentapi
+
+# create logger with default config
+logger = logging.getLogger(__name__)
 
 # parse variables with reasonable default values
 host = os.getenv("HOST", "127.0.0.1:8080")
@@ -37,6 +40,7 @@ for torrent in qbt_client.torrents_info(status_filter="seeding"):
 
 # cleanup tagged torrents that are working now
 if torrents_to_remove:
+    logger.info("Removing tag '%s' from %i torrents", tag, len(torrents_to_remove))
     qbt_client.torrent_tags.remove_tags(
         tags=tag,
         torrent_hashes=torrents_to_remove,
@@ -44,6 +48,7 @@ if torrents_to_remove:
 
 # tag torrents that are not working now
 if torrents_to_add:
+    logger.info("Adding tag '%s' to %i torrents", tag, len(torrents_to_add))
     qbt_client.torrent_tags.add_tags(
         tags=tag,
         torrent_hashes=torrents_to_add,
