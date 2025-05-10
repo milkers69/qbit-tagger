@@ -23,13 +23,18 @@ qbt_client = qbittorrentapi.Client(
 
 # try to login, throws qbittorrentapi.LoginFailed exception
 qbt_client.auth_log_in()
+logger.info("Logged into qbittorrent at %s", host)
 
 # hashes to update tag on
 torrents_to_add = set()
 torrents_to_remove = set()
 
+# load torrents
+torrents = qbt_client.torrents_info(status_filter="seeding")
+logger.info("Loaded %i torrents from qbittorrent")
+
 # for all torrents
-for torrent in qbt_client.torrents_info(status_filter="seeding"):
+for torrent in torrents:
     # torrents that are tagged and working now
     if tag in torrent.tags and any(tracker.status == 2 for tracker in torrent.trackers):
         torrents_to_remove.add(torrent.hash)
