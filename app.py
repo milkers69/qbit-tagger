@@ -44,6 +44,9 @@ for torrent in torrents:
     ):
         torrents_to_add_tag.add(torrent.hash)
 
+# flag to know if a "nothing happened" log should be created
+tags_updated = False
+
 # cleanup tagged torrents that are working now
 if torrents_to_remove_tag:
     logger.info("Removing tag '%s' from %i torrents", tag, len(torrents_to_remove_tag))
@@ -51,7 +54,8 @@ if torrents_to_remove_tag:
         tags=tag,
         torrent_hashes=torrents_to_remove_tag,
     )
-
+    tags_updated = True
+    
 # tag torrents that are not working now
 if torrents_to_add_tag:
     logger.info("Adding tag '%s' to %i torrents", tag, len(torrents_to_add_tag))
@@ -59,3 +63,7 @@ if torrents_to_add_tag:
         tags=tag,
         torrent_hashes=torrents_to_add_tag,
     )
+    tags_updated = True
+
+if not tags_updated:
+    logger.info("No torrents need tag updated")
