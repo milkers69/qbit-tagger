@@ -55,7 +55,7 @@ if torrents_to_remove_tag:
         torrent_hashes=torrents_to_remove_tag,
     )
     tags_updated = True
-    
+
 # tag torrents that are not working now
 if torrents_to_add_tag:
     logger.info("Adding tag '%s' to %i torrents", tag, len(torrents_to_add_tag))
