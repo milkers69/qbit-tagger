@@ -28,7 +28,7 @@ services:
       - TAG=Not Working
       - USERNAME=admin
       - PASSWORD=adminadmin
-    # wait 90seconds do allow everything in compose stack to start and then run every 15mins instead of just once
+    # wait 90seconds to allow everything in compose stack to start nicely and then run every 15mins instead of just once
     entrypoint: sh -c "sleep 90; while true; do python3 /app/app.py; sleep $((60*15)); done"
     networks:
       - internal
