@@ -1,3 +1,6 @@
+> [!CAUTION]
+> This is abandoned as this functinality is built into [qui](https://github.com/autobrr/qui)
+
 # **qbit-tagger**
 
 **Tag torrents with a tag (customizable) in qbit if not announcing properly**
