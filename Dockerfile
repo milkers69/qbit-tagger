@@ -1,4 +1,4 @@
-FROM alpine:3.22.1
+FROM alpine:3.22.2
 
 # make and move into "app" folder
 WORKDIR /app
