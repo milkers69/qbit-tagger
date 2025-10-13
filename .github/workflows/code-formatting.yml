@@ -18,7 +18,7 @@ jobs:
           options: "app.py"
 
       - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v6
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: Black Formatting
           commit_user_name: Black
